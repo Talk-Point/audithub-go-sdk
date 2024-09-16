@@ -86,3 +86,38 @@ func TestAddMetadata(t *testing.T) {
 		t.Errorf("Metadata not added correctly, got %v", entry.Metadata)
 	}
 }
+
+func TestAuditLogBase(t *testing.T) {
+	a := AuditLog("test_service", "test_event")
+	err := a.Log()
+	if err != nil {
+		t.Errorf("expected no error, got %v", err)
+	}
+}
+
+func TestAuditLogMetadata(t *testing.T) {
+	a := AuditLog("test_service", "test_event").
+		AddMetadata("key1", "value1")
+	err := a.Log()
+	if err != nil {
+		t.Errorf("expected no error, got %v", err)
+	}
+}
+
+func TestAuditLogLabels(t *testing.T) {
+	a := AuditLog("test_service", "test_event").
+		AddLabels([]string{"label1", "label2"})
+	err := a.Log()
+	if err != nil {
+		t.Errorf("expected no error, got %v", err)
+	}
+}
+
+func TestAuditLogGids(t *testing.T) {
+	a := AuditLog("test_service", "test_event").
+		AddGids([]string{"gid1", "gid2"})
+	err := a.Log()
+	if err != nil {
+		t.Errorf("expected no error, got %v", err)
+	}
+}

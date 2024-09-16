@@ -65,5 +65,8 @@ func AuditLog(service string, event string) *AuditEntry {
 		Timestamp: time.Now().Unix(),
 		Service:   service,
 		Event:     event,
+		Metadata:  make(map[string]string),
+		Labels:    make([]string, 0),
+		Gids:      make([]string, 0),
 	}
 }

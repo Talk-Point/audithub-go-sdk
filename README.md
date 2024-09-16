@@ -1,6 +1,6 @@
 # AuditHub Go SDK
 
-The audit package provides a simple way to log audit entries in a structured format. It supports creating entries with various fields such as service name, event type, user information, and metadata. The package is designed to be flexible and extensible, making it suitable for various auditing needs.
+The audit package provides a simple way to log audit entries in a structured format to read from the [AuditHub](https://github.com/Talk-Point/audithub). It supports creating entries with various fields such as service name, event type, user information, and metadata. The package is designed to be flexible and extensible, making it suitable for various auditing needs.
 
 ## Features
 

@@ -22,6 +22,7 @@ func TestAuditLog(t *testing.T) {
 	if entry.Timestamp <= 0 {
 		t.Errorf("expected Timestamp to be set, got %d", entry.Timestamp)
 	}
+	os.Setenv("ENV", "")
 }
 
 func TestLog(t *testing.T) {

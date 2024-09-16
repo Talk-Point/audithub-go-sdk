@@ -8,14 +8,14 @@ import (
 )
 
 type AuditEntry struct {
-	Env       string            `json:"env"`
-	Timestamp int64             `json:"timestamp"`
-	Service   string            `json:"service"`
-	Event     string            `json:"event"`
-	Gids      []string          `json:"gids"`
-	Labels    []string          `json:"labels"`
-	ByUser    string            `json:"by_user"`
-	Metadata  map[string]string `json:"metadata"`
+	Env       string                 `json:"env"`
+	Timestamp int64                  `json:"timestamp"`
+	Service   string                 `json:"service"`
+	Event     string                 `json:"event"`
+	Gids      []string               `json:"gids"`
+	Labels    []string               `json:"labels"`
+	ByUser    string                 `json:"by_user"`
+	Metadata  map[string]interface{} `json:"metadata"`
 }
 
 // Log outputs the audit entry as a JSON string.
@@ -47,7 +47,7 @@ func (a *AuditEntry) By(user string) *AuditEntry {
 }
 
 // AddMetadata adds a key-value pair to the metadata.
-func (a *AuditEntry) AddMetadata(key, value string) *AuditEntry {
+func (a *AuditEntry) AddMetadata(key string, value interface{}) *AuditEntry {
 	a.Metadata[key] = value
 	return a
 }
@@ -65,7 +65,7 @@ func AuditLog(service string, event string) *AuditEntry {
 		Timestamp: time.Now().Unix(),
 		Service:   service,
 		Event:     event,
-		Metadata:  make(map[string]string),
+		Metadata:  make(map[string]interface{}),
 		Labels:    make([]string, 0),
 		Gids:      make([]string, 0),
 	}

@@ -34,7 +34,7 @@ func TestLog(t *testing.T) {
 		Gids:      []string{"gid1"},
 		Labels:    []string{"label1"},
 		ByUser:    "user1",
-		Metadata:  map[string]string{"key1": "value1"},
+		Metadata:  map[string]interface{}{"key1": "value1"},
 	}
 
 	err := entry.Log()
@@ -77,7 +77,7 @@ func TestBy(t *testing.T) {
 }
 
 func TestAddMetadata(t *testing.T) {
-	entry := &AuditEntry{Metadata: make(map[string]string)}
+	entry := &AuditEntry{Metadata: make(map[string]interface{})}
 	entry.AddMetadata("key1", "value1")
 
 	if len(entry.Metadata) != 1 {

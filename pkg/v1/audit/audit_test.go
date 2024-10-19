@@ -122,3 +122,17 @@ func TestAuditLogGids(t *testing.T) {
 		t.Errorf("expected no error, got %v", err)
 	}
 }
+
+func TestAuditLogFromReadme(t *testing.T) {
+	err := AuditLog("de.talk-point.sagehub", "create").
+		AddGids([]string{"a", "b"}).
+		AddLabels([]string{"label-1", "label-2"}).
+		By("test").
+		AddMetadata("key1", "value1").
+		AddMetadata("key2", "value2").
+		Log()
+
+	if err != nil {
+		t.Errorf("expected no error, got %v", err)
+	}
+}

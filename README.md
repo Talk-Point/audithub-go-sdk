@@ -32,7 +32,7 @@ func main() {
 	audit.AuditLog("de.talk-point.sagehub", "create").
 		AddGids([]string{"a", "b"}).
 		AddLabels([]string{"label-1", "label-2"}).
-		ByUser("test").
+		By("test").
 		AddMetadata("key1", "value1").
 		AddMetadata("key2", "value2").
 		Log()

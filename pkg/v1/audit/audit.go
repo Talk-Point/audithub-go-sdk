@@ -28,6 +28,14 @@ func (a *AuditEntry) SetTimestamp(timestamp int64) *AuditEntry {
 	return a
 }
 
+func (a *AuditEntry) String() (string, error) {
+	jsonData, err := json.Marshal(a)
+	if err != nil {
+		return "", err
+	}
+	return string(jsonData), nil
+}
+
 func (a *AuditEntry) Log() error {
 	jsonData, err := json.Marshal(a)
 	if err != nil {

@@ -12,16 +12,16 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        go-version: [ '1.23' ]
+        go-version: [ '1.25' ]
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Setup Go ${{ matrix.go-version }}
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version: ${{ matrix.go-version }}
 

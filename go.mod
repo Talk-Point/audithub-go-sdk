@@ -1,3 +1,3 @@
 module github.com/Talk-Point/audithub-go-sdk
 
-go 1.26
+go 1.27
